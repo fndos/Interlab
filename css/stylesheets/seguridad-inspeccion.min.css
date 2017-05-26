@@ -1,0 +1,281 @@
+#inicio, #data {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+#data {
+  margin-bottom: 10px;
+}
+.form-control {
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 0.1px;
+  border-image: initial;
+}
+.modificar, .eliminar {
+  border-radius: 20%;
+}
+.nuevo {
+  border-radius: 50%;
+  height: 33px;
+}
+.nuevo:focus, .nuevo:active, .nuevo:target, .nuevo:active:focus {
+  outline: none;nuevo
+  border: none;
+}
+.eliminar:focus, .eliminar:active, .eliminar:target, .eliminar:active:focus {
+  outline: none;
+  border: none;
+}
+.modificar:focus, .modificar:active, .modificar:target, .modificar:active:focus {
+  outline: none;
+  border: none;
+}
+.btn-nuevo {
+  margin-right: 10px;
+}
+#botoneria {
+  margin-left: 16px;
+}
+.buttons-excel, .buttons-pdf, .btn-nuevo { /*.buttons-copy, .buttons-collection*/
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 0.1px;
+  border-image: initial;
+}
+.btn-group {
+  margin-bottom: 30px;
+}
+.btn-default, .btn-modal {
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 0.1px;
+  border-image: initial;
+  border-radius: 5%;
+}
+.input-sm {
+  height: 30px;
+  margin-bottom: 5px;
+}
+.text-left {
+  margin-left: 0px;
+}
+.heading {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.text-right {
+  margin-left: 385px;
+}
+.nuevo {
+  margin-left: 10px;
+}
+/*INPUTS NORMALES*/
+#idInspeccion-Nuevo, #observacion-Nuevo { 
+  height: 30px;
+  width: 324px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+/*INPUTS CON SELECT INFERIOR*/
+#fecha-Nuevo, #idUsuario-Nuevo {
+  height: 30px;
+  width: 324px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+/*SELECTS NORMALES*/
+#idLista-Nuevo, #estado-Nuevo {
+  height: 30px;
+  margin-bottom: 10px;
+}
+/*INPUTS NORMALES*/
+#idInspeccion-Modificar, #observacion-Modificar  { 
+  height: 30px;
+  width: 324px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+/*INPUTS CON SELECT INFERIOR*/
+  #fecha-Modificar, #idUsuario-Modificar {
+  height: 30px;
+  width: 324px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+/*SELECTS NORMALES*/
+#idLista-Modificar, #estado-Modificar {
+  height: 30px;
+  margin-bottom: 10px;
+}
+#logout, #user-name {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.dropdown-menu li a:hover { 
+  background-color: #101010;
+  color: white;
+}
+.footer-top {
+  height: 200px;
+}
+#dt-usuarios_filter {
+  width: 300px;
+  float: right;
+}
+#dt-usuarios_length {
+  width: 200px;
+  float: left;
+}
+/* lg */ 
+@media (min-width: 1200px) {
+  .nuevo, .btn-nuevo{
+    height: 5vh;
+  }
+  .img-responsive {
+    width: 70px;
+    height: 70pX;
+    padding-top: 10px;
+  }
+}
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .img-responsive {
+    width: 70px;
+    height: 70pX;
+    padding-top: 10px;
+  }
+}
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+  .col-sm-6 + .col-sm-6{
+    padding-left: 140px;
+  }
+  .img-responsive {
+    padding-top: 9px;
+    width: 70px;
+    height: 70pX; 
+  }
+  #marca {
+    padding-top: 15px;
+  }
+  /*INPUTS NORMALES*/
+    #idInspeccion-Nuevo, #observacion-Nuevo  { 
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  /*INPUTS CON SELECT INFERIOR*/
+  #fecha-Nuevo, #idUsuario-Nuevo  {
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 15px;
+  }
+  /*SELECTS NORMALES*/
+  #idLista-Nuevo, #estado-Nuevo {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  /*INPUTS NORMALES*/
+  #idInspeccion-Modificar, #observacion-Modificar  { 
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  /*INPUTS CON SELECT INFERIOR*/
+  #fecha-Modificar, #idUsuario-Modificar  {
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 15px;
+  }
+  /*SELECTS NORMALES*/
+  #idLista-Modificar, #estado-Modificar {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+}
+/* xs */
+@media only screen and (max-width: 767px) {
+  #botoneria {
+    width: 173px;
+  }
+  .row .btn-group {
+    width: 111px;
+  }
+  #dt-usuarios_filter {
+    width: 111px; 
+    padding-top: 15px;
+    float: none;
+  }
+  #dt-usuarios_length {
+    width: 109px;
+    padding-top: 15px;
+    float: none;
+    display: none;
+  }
+  .nuevo {
+    height: 34px;
+  }
+  .img-responsive {
+    padding-left: 12px;
+    padding-top: 2px;
+    width: 60px;
+    height: 48pX;
+  }
+  #marca {
+    padding-top: 15px;
+  }
+  /*INPUTS NORMALES*/
+  #idInspeccion-Nuevo, #observacion-Nuevo { 
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  /*INPUTS CON SELECT INFERIOR*/
+  #fecha-Nuevo, #idUsuario-Nuevo{
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 15px;
+  }
+  /*SELECTS NORMALES*/
+  #idLista-Nuevo, #estado-Nuevo {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  /*INPUTS NORMALES*/
+  #idInspeccion-Modificar, #observacion-Modificar  { 
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  /*INPUTS CON SELECT INFERIOR*/
+  #fecha-Modificar, #idUsuario-Modificar {
+    height: 30px;
+    width: 260px;
+    padding-left: 5px;
+    margin-bottom: 15px;
+  }
+  /*SELECTS NORMALES*/
+  #idLista-Modificar, #estado-Modificar {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+}
