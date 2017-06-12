@@ -228,7 +228,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarHallazgo.php" method="POST">
             Codigo<br>
-            <input type="text" name="idHallazgo" id="idHallazgo-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idHallazgo" id="idHallazgo-Modificar" minlength="5" maxlength="5" readonly><br>
             Tipo de Hallazgo<br>
             <select name="idHall" id="idHall-Modificar">
               <?php

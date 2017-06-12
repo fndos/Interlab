@@ -252,7 +252,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarDep.php" method="POST">
             Codigo<br>
-            <input type="text" name="idDep" id="idDep-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idDep" id="idDep-Modificar" minlength="5" maxlength="5" readonly><br>
             Establecimiento<br>
             <select name="idEstab" id="idEstab-Modificar">
               <?php

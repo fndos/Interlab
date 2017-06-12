@@ -210,7 +210,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificar2Enfermedad.php" method="POST">
             Codigo<br>
-            <input type="text" name="idEn" id="idEn-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idEn" id="idEn-Modificar" minlength="5" maxlength="5" readonly><br>
             Tipo de Enfermedad<br>
             <input type="text" name="nombre" id="nombre-Modificar" minlength="10" maxlength="40"><br>
           </form>

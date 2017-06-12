@@ -232,7 +232,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarServicio.php" method="POST">
             Codigo<br>
-            <input type="text" name="idServicio" id="idServicio-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idServicio" id="idServicio-Modificar" minlength="5" maxlength="5" readonly><br>
             Especialidad<br>
             <select name="idEsp" id="idEsp-Modificar">
               <?php

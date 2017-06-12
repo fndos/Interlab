@@ -218,7 +218,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarEntidad.php" method="POST">
             Codigo<br>
-            <input type="text" name="idEntidad" id="idEntidad-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idEntidad" id="idEntidad-Modificar" minlength="5" maxlength="5" readonly><br>
             Entidad<br>
             <input type="text" name="nombre" id="nombre-Modificar" minlength="5" maxlength="40"><br>
             Titular<br>

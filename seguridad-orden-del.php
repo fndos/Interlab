@@ -262,7 +262,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarOsea.php" method="POST">
             Codigo<br>
-            <input type="text" name="idOsea" id="idOsea-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idOsea" id="idOsea-Modificar" minlength="5" maxlength="5" readonly><br>
             Fecha del Servicio<br>
             <input type="date" name="fecha" id="fecha-Modificar"><br>
             Asignado a<br>

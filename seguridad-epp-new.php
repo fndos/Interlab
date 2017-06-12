@@ -278,7 +278,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarInforme.php" method="POST">
             Codigo<br>
-            <input type="text" name="idInforme" id="idInforme-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idInforme" id="idInforme-Modificar" minlength="5" maxlength="5" readonly><br>
             Fecha de Aprobacion<br>
             <input type="date" name="fecha" id="fecha-Modificar"><br>
             Responsable<br>

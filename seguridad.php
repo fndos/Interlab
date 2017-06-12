@@ -354,7 +354,7 @@
           <!--Formulario Modificar-->
           <form id="FormModificar" action="server/modificarDemanda.php" method="POST">
             Codigo<br>
-            <input type="text" name="idDemanda" id="idDemanda-Modificar" minlength="5" maxlength="5"  disabled><br>
+            <input type="text" name="idDemanda" id="idDemanda-Modificar" minlength="5" maxlength="5"  readonly><br>
             Fecha<br>
             <input type="date" name="fecha" id="fecha-Modificar"><br>
             Asignado a<br>

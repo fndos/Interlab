@@ -352,7 +352,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarUsuario.php" method="POST">
             Cédula<br>
-            <input type="text" name="idUsuario" id="idUsuario-Modificar" minlength="10" maxlength="10" disabled><br>
+            <input type="text" name="idUsuario" id="idUsuario-Modificar" minlength="10" maxlength="10" readonly><br>
             Departamento<br>
             <select name="idDep" id="idDep-Modificar">
               <?php

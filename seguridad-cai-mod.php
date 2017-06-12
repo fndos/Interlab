@@ -313,7 +313,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarCai.php" method="POST">
             Codigo<br>
-            <input type="text" name="idCai" id="idCai-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idCai" id="idCai-Modificar" minlength="5" maxlength="5" readonly><br>
             Fecha del informe<br>
             <input type="date" name="fechaInforme" id="fechaInforme-Modificar"><br>
             Empleado<br>

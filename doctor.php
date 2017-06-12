@@ -268,7 +268,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarFicha.php" method="POST">
             Historia<br>
-            <input type="text" name="idFicha" id="idFicha-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idFicha" id="idFicha-Modificar" minlength="5" maxlength="5" readonly><br>
             Empleado<br>
             <select name="idUsuario" id="idUsuario-Modificar">
               <?php

@@ -203,7 +203,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarTrabajo.php" method="POST">
             Codigo<br>
-            <input type="text" name="idTrabajo" id="idTrabajo-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idTrabajo" id="idTrabajo-Modificar" minlength="5" maxlength="5" readonly><br>
             Puesto de Trabajo<br>
             <input type="text" name="nombre" id="nombre-Modificar" minlength="10" maxlength="40"><br>
           </form>

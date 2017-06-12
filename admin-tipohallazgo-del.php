@@ -210,7 +210,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificar2Hallazgo.php" method="POST">
             Codigo<br>
-            <input type="text" name="idHall" id="idHall-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idHall" id="idHall-Modificar" minlength="5" maxlength="5" readonly><br>
             Tipo de Hallazgo<br>
             <input type="text" name="nombre" id="nombre-Modificar" minlength="10" maxlength="40"><br>
           </form>

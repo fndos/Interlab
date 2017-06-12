@@ -228,7 +228,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarExamen.php" method="POST">
             Codigo<br>
-            <input type="text" name="idExamen" id="idExamen-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idExamen" id="idExamen-Modificar" minlength="5" maxlength="5" readonly><br>
             Tipo de Examen<br>
             <select name="idEx" id="idEx-Modificar">
               <?php

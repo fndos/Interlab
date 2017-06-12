@@ -228,7 +228,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarMed.php" method="POST">
             Codigo<br>
-            <input type="text" name="idMedicamento" id="idMedicamento-Modificar" minlength="5" maxlength="5" disabled><br>
+            <input type="text" name="idMedicamento" id="idMedicamento-Modificar" minlength="5" maxlength="5" readonly><br>
             Tipo de Medicamento<br>
             <select name="idMed" id="idMed-Modificar">
               <?php
