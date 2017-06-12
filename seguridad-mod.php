@@ -346,6 +346,11 @@
           <h4 class="modal-title">Modificar Demanda de Seguridad</h4>
         </div>
         <div class="modal-body">
+          <!--Formulario de Redireccion a foto-->
+          <form id="FormFoto" action="server/fotoDemanda.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="idDemanda-Foto" name="idDemanda" value="" placeholder="">
+          </form>
+          <!--Formulario Modificar-->
           <form id="FormModificar" action="server/modificarDemanda.php" method="POST">
             Codigo<br>
             <input type="text" name="idDemanda" id="idDemanda-Modificar" minlength="5" maxlength="5" readonly><br>
@@ -435,6 +440,11 @@
               <option value="Aceptada">Aceptada</option>
               <option value="Aceptada">Cerrada</option>
             </select><br>
+            Evidencia Fotográfica<br>
+            <button style="border-radius: 4px;" type="submit" form="FormFoto" class="btn btn-default">
+              <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+              Ver imagen guardada 
+            </button><br>
             Comentario<br>
             <input type="text" name="comentario" id="comentario-Modificar" minlength="5" maxlength="200"><br>
           </form>
@@ -534,6 +544,8 @@
       $("#descripcion-Modificar").val(descripcion);
       $("#estado-Modificar").val(estado);
       $("#comentario-Modificar").val(comentario);
+      //Hidden value
+      $("#idDemanda-Foto").val(idDemanda);
     }
   </script>
 </body>
