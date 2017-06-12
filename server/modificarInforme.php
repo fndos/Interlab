@@ -11,4 +11,4 @@ $observacion = $_POST['observacion'];
 $query = "UPDATE informe SET idInforme='$idInforme', idUsuario='$idUsuario', idEpp='$idEpp', fecha='$fecha', cantidad='$cantidad', observacion='$observacion' WHERE idInforme='$idInforme'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-epp.php");
+header("Location: ../seguridad-epp-mod.php");

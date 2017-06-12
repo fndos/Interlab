@@ -25,4 +25,4 @@ $medicamentoDetalle = $_POST['medicamentoDetalle'];
 $query = "UPDATE ficha SET idFicha='$idFicha', idUsuario='$idUsuario', fechaIngreso='$fechaIngreso', vulnerabilidad='$vulnerabilidad', detalle='$detalle', grupoSanguineo='$grupoSanguineo', nombreEmergencia='$nombreEmergencia', celularEmergencia='$celularEmergencia', peso='$peso', talla='$talla', imc='$imc', pa='$pa', fc='$fc', fr='$fr', quirurgicos='$quirurgicos', traumaticos='$traumaticos', alergicos='$alergicos', enfermedades='$enfermedades', medicamento='$medicamento', medicamentoDetalle='$medicamento' WHERE idFicha='$idFicha'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../doctor.php");
+header("Location: ../doctor-mod.php");

@@ -22,4 +22,4 @@ $rol = $_POST['rol'];
 $query = "INSERT INTO usuario (idUsuario, idTrabajo, nombres, apellidos, birthday, sexo, estadoCivil, educacion, idDep, telefono, celular, direccion, email, estado, user, pass, rol) VALUES ('$idUsuario', '$idTrabajo', '$nombres', '$apellidos', '$birthday', '$sexo', '$estadoCivil', '$educacion', '$idDep', '$telefono', '$celular', '$direccion', '$email', '$estado', '$user', '$pass', '$rol')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin.php");
+header("Location: ../admin-new.php");

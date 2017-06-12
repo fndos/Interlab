@@ -13,4 +13,4 @@ $estado = $_POST['estado'];
 $query = "INSERT INTO osea (idOsea, idUsuario, fecha, contratista, servicio, monto, observacion, estado) VALUES ('$idOsea', '$idUsuario', '$fecha', '$contratista', '$servicio', '$monto', '$observacion', '$estado')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-orden.php");
+header("Location: ../seguridad-orden-new.php");

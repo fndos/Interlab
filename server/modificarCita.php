@@ -18,4 +18,4 @@ $idMedicamento = $_POST['idMedicamento'];
 $query = "UPDATE cita SET idCita='$idCita', idUsuario='$idUsuario', idServicio='$idServicio', profesional='$profesional', fecha='$fecha', hora='$hora', observacion='$observacion', asistio='$asistio', estado='$estado', idImagen='$idImagen', idExamen='$idExamen', idEnfermedad='$idEnfermedad', idMedicamento='$idMedicamento' WHERE idCita='$idCita'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../doctor-cita.php");
+header("Location: ../doctor-cita-mod.php");

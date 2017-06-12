@@ -12,4 +12,4 @@ $estado = $_POST['estado'];
 $query = "INSERT INTO establecimiento (idEstab, idEntidad, direccion, telefono, ciudad, estado) VALUES ('$idEstab', '$idEntidad', '$direccion', '$telefono', '$ciudad', '$estado')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-establecimiento.php");
+header("Location: ../admin-establecimiento-new.php");

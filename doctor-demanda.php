@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="doctor.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="doctor.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -82,10 +82,17 @@
 
   <section id="data">
     <div class="container">
+
+      <div id="the-alert" class="alert alert-warning alert-dismissable collapse">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Usted no tiene permisos para acceder a esta opción.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
-          <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
-          <a class="btn btn-default btn-nuevo" data-toggle="modal" data-target="#ModalNuevo"><span>Nuevo Registro</span></a>
+          <button class="btn btn-success nuevo"><span class="glyphicon glyphicon-plus"></span></button>
+          <a class="btn btn-default btn-nuevo"><span>Nuevo Registro</span></a>
         </div>
       </div>    
       <table id="dt-usuarios" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -95,7 +102,7 @@
           <th>Fecha</th>
           <th>Sucursal</th>
           <th>Departamento</th>
-          <th>Responsable</th>
+          <th>Asignado a</th>
           <th>Estado</th>
           <th>Hallazgo</th>
           <th>Correctivo</th>
@@ -106,63 +113,68 @@
           <th>Aceptar</th>
           <th>Redirigir</th>
           <th>Comentar</th>
+          <th>Adjuntar</th>
         </tr>
         </thead>
         <tbody>
           <?php
             include 'dbh.php';
-            $query = "SELECT * FROM demanda";
-            if ($result = mysqli_query($conn, $query)) {
+            $actual_ini = (string) $_SESSION['user'];
+            $query_ini = "SELECT * FROM usuario WHERE user='$actual_ini'";
+            if ($result_ini = mysqli_query($conn, $query_ini)) {
+              while ($data_ini = mysqli_fetch_assoc($result_ini)) {
+                $actual = (string) $data_ini['idUsuario'];
+                $query = "SELECT * FROM demanda WHERE idUsuario='$actual'";
+                if ($result = mysqli_query($conn, $query)) {
+                  while ($data = mysqli_fetch_assoc($result)) {
+                    $variable = (string) "Aceptada";
+                    $idUsuario = (string) $data['idUsuario'];
+                    $idLista = (string) $data['idLista'];
+                    $idHallazgo = (string) $data['idHallazgo'];
+                    $idCorrectivo = (string) $data['idCorrectivo']; 
+                    
+                    $search = "SELECT * FROM usuario WHERE idUsuario='$idUsuario'";
+                    $resultado = mysqli_query($conn, $search); 
+                    $row = $resultado->fetch_assoc();
 
-            while ($data = mysqli_fetch_assoc($result)) {
-              $variable = (string) "Aceptada";
-              $idUsuario = (string) $data['idUsuario'];
-              $idLista = (string) $data['idLista'];
-              $idHallazgo = (string) $data['idHallazgo'];
-              $idCorrectivo = (string) $data['idCorrectivo']; 
-              
-              $search = "SELECT * FROM usuario WHERE idUsuario='$idUsuario'";
-              $resultado = mysqli_query($conn, $search); 
-              $row = $resultado->fetch_assoc();
+                    //Variables, establecimiento, departamento
+                    $idDep = (string) $row['idDep'];
+                    
+                    //Departamento del usuario
+                    $search_2 = "SELECT * FROM departamento WHERE idDep='$idDep'";
+                    $resultado_2 = mysqli_query($conn, $search_2); 
+                    $row_2 = $resultado_2->fetch_assoc();
 
-              //Variables, establecimiento, departamento
-              $idDep = (string) $row['idDep'];
-              
-              //Departamento del usuario
-              $search_2 = "SELECT * FROM departamento WHERE idDep='$idDep'";
-              $resultado_2 = mysqli_query($conn, $search_2); 
-              $row_2 = $resultado_2->fetch_assoc();
+                    //Establecimiento del usuario
+                    $idEstab = (string) $row_2['idEstab'];
 
-              //Establecimiento del usuario
-              $idEstab = (string) $row_2['idEstab'];
+                    //Establecimiento del usuario
+                    $search_3 = "SELECT * FROM establecimiento WHERE idEstab='$idEstab'";  
+                    $resultado_3 = mysqli_query($conn, $search_3);
+                    $row_3 = $resultado_3->fetch_assoc();
 
-              //Establecimiento del usuario
-              $search_3 = "SELECT * FROM establecimiento WHERE idEstab='$idEstab'";  
-              $resultado_3 = mysqli_query($conn, $search_3);
-              $row_3 = $resultado_3->fetch_assoc();
+                    //Variable entidad
+                    $idEntidad = (string) $row_3['idEntidad'];
 
-              //Variable entidad
-              $idEntidad = (string) $row_3['idEntidad'];
+                    //Entidad a la que el usuario pertenece
+                    $search_4 = "SELECT * FROM entidad WHERE idEntidad='$idEntidad'";
+                    $resultado_4 = mysqli_query($conn, $search_4);
+                    $row_4 = $resultado_4->fetch_assoc();
+                    
+                    //Nombre del elemento de la lista (CHECKLIST). Motivo
+                    $search_5 = "SELECT * FROM listaverificacion WHERE idLista='$idLista'";
+                    $resultado_5 = mysqli_query($conn, $search_5);
+                    $row_5 = $resultado_5->fetch_assoc();
 
-              //Entidad a la que el usuario pertenece
-              $search_4 = "SELECT * FROM entidad WHERE idEntidad='$idEntidad'";
-              $resultado_4 = mysqli_query($conn, $search_4);
-              $row_4 = $resultado_4->fetch_assoc();
-              
-              //Nombre del elemento de la lista (CHECKLIST). Motivo
-              $search_5 = "SELECT * FROM listaverificacion WHERE idLista='$idLista'";
-              $resultado_5 = mysqli_query($conn, $search_5);
-              $row_5 = $resultado_5->fetch_assoc();
+                    //Nombre del elemento de la Hallazgo
+                    $search_6 = "SELECT * FROM hallazgo WHERE idHallazgo='$idHallazgo'";
+                    $resultado_6 = mysqli_query($conn, $search_6);
+                    $row_6 = $resultado_6->fetch_assoc();
 
-              //Nombre del elemento de la Hallazgo
-              $search_6 = "SELECT * FROM hallazgo WHERE idHallazgo='$idHallazgo'";
-              $resultado_6 = mysqli_query($conn, $search_6);
-              $row_6 = $resultado_6->fetch_assoc();
-
-              //Nombre del elemento de la Medida
-              $search_7 = "SELECT * FROM medidacorrectiva WHERE idCorrectivo='$idCorrectivo'";
-              $resultado_7 = mysqli_query($conn, $search_7);
-              $row_7 = $resultado_7->fetch_assoc();
+                    //Nombre del elemento de la Medida
+                    $search_7 = "SELECT * FROM medidacorrectiva WHERE idCorrectivo='$idCorrectivo'";
+                    $resultado_7 = mysqli_query($conn, $search_7);
+                    $row_7 = $resultado_7->fetch_assoc();
           ?>
 
           <tr>
@@ -193,18 +205,25 @@
                 <span class='glyphicon glyphicon-comment'></span>
               </button>
             </td> 
+            <td>
+              <button class='btn btn-warning eliminar' onclick="adjuntarDemanda('<?php echo $data['idDemanda'];?>')" data-toggle='modal' data-target='#ModalAdjuntar'>
+                <span class='glyphicon glyphicon glyphicon-save'></span>
+              </button>
+            </td> 
           </tr>
           <?php 
-        }
+                  }
+                }
+              }
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
-            mysqli_free_result($resultado_6);
-            mysqli_free_result($resultado_7);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
+            if (isset($resultado_6)) { mysqli_free_result($resultado_6); }
+            if (isset($resultado_7)) { mysqli_free_result($resultado_7); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -212,26 +231,6 @@
       </table>
     </div>
   </section>
-
-  <!--Modal Nuevo-->
-  <div id="ModalNuevo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">¡Acceso denegado!</h4>
-        </div>
-        <div class="modal-body">
-          Usted no tiene los permisos para acceder a esta opcion.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit" data-dismiss="modal" class="btn btn-info btn-warning">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!--Modal Aceptar-->
   <div id="ModalAceptar" class="modal fade" role="dialog">
@@ -283,7 +282,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -318,6 +317,30 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           <button type="submit" form="FormComentar" class="btn btn-info btn-primary">Comentar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Adjuntar-->
+  <div id="ModalAdjuntar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Adjuntar Evidencia por Demanda de Seguridad</h4>
+        </div>
+        <div class="modal-body">
+          <form id="FormAdjuntar" enctype="multipart/form-data" action="server/doctor-adjuntarDemanda.php" method="POST">
+            <input type="hidden" id="idDemanda-Adjuntar" name="idDemanda" value="" placeholder="">
+            Seleccione una imagen<br>  
+            <input type="file" name="image">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" name="submit" form="FormAdjuntar" class="btn btn-warning btn-modal">Guardar</button>
         </div>
       </div>
     </div>
@@ -370,6 +393,13 @@
   <!--My JavaScript-->
   <script type="text/javascript" src="js/admin.min.js"></script>
   <script type="text/javascript">
+    $(document).ready( function () {
+      $("#botoneria").click( function () {
+        $("#the-alert").show();
+      }) 
+
+    });
+
     function aceptarDemanda(idDemanda) {
       $("#idDemanda-Aceptar").val(idDemanda);
       $("#estado-Aceptar").val("Aceptada");
@@ -382,6 +412,9 @@
     function comentarDemanda(idDemanda, comentario) {
       $("#idDemanda-Comentar").val(idDemanda);
       $("#comentario-Comentar").val(comentario);
+    }
+    function adjuntarDemanda(idDemanda) {
+      $("#idDemanda-Adjuntar").val(idDemanda);
     }
   </script>
 </body>

@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="admin.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="admin.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -164,8 +164,8 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -186,7 +186,7 @@
         <div class="modal-body">
           <form id="FormNuevo" action="server/crearHallazgo.php" method="POST">
             Codigo<br>
-            <input type="text" name="idHallazgo" id="idHallazgo-Nuevo" minlength="5" maxlength="5" placeholder="TH000"><br>
+            <input type="text" name="idHallazgo" id="idHallazgo-Nuevo" minlength="5" maxlength="5" placeholder="HE000"><br>
             Tipo de Hallazgo<br>
             <select name="idHall" id="idHall-Nuevo">
               <?php
@@ -200,7 +200,7 @@
               <option value="<?php echo $data['idHall']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -228,7 +228,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarHallazgo.php" method="POST">
             Codigo<br>
-            <input type="text" name="idHallazgo" id="idHallazgo-Modificar" minlength="5" maxlength="5"><br>
+            <input type="text" name="idHallazgo" id="idHallazgo-Modificar" minlength="5" maxlength="5" disabled><br>
             Tipo de Hallazgo<br>
             <select name="idHall" id="idHall-Modificar">
               <?php
@@ -242,7 +242,7 @@
               <option value="<?php echo $data['idHall']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>

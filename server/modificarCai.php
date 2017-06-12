@@ -24,4 +24,4 @@ $elaborado = $_POST['elaborado'];
 $query = "UPDATE cai SET idCai='$idCai', idUsuario='$idUsuario', fechaInforme='$fechaInforme', severidad='$severidad', turno='$turno', fechaSuceso='$fechaSuceso', danosMateriales='$danosMateriales', monto='$monto', estado='$estado', jornadasPerdidas='$jornadasPerdidas', descripcion='$descripcion', partesAfectadas='$partesAfectadas', atendidoEn='$atendidoEn', reposo='$reposo', desde='$desde', hasta='$hasta', recomendaciones='$recomendaciones', accionesCorrectivas='$accionesCorrectivas', elaborado='$elaborado' WHERE idCai='$idCai'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-cai.php");
+header("Location: ../seguridad-cai-mod.php");

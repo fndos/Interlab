@@ -8,4 +8,4 @@ $nombre = $_POST['nombre'];
 $query = "UPDATE tipoexamen SET idEx='$idEx', nombre='$nombre' WHERE idEx='$idEx'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-tipoexamen.php");
+header("Location: ../admin-tipoexamen-mod.php");

@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="seguridad.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="seguridad.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -95,6 +95,14 @@
 
   <section id="data">
     <div class="container">
+
+      <div class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Bienvenido <strong>Tenico/Seguridad! </strong> <br>
+          Sistema de Gestión y Control de Seguridad y Salud Ocupacional.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
           <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
@@ -108,7 +116,8 @@
           <th>Fecha</th>
           <th>Sucursal</th>
           <th>Departamento</th>
-          <th>Responsable</th>
+          <th>Asignado a</th>
+          <th>Estado</th>
           <th>Hallazgo</th>
           <th>Correctivo</th>
           <th>Fecha Maxima</th>
@@ -181,6 +190,7 @@
             <td><?php echo $row_4['nombre']; echo " - "; echo $row_3['ciudad']; ?></td>
             <td><?php echo $row_2['nombre']; ?></td>
             <td><?php echo $row['nombres']; echo " "; echo $row['apellidos'];?></td>
+            <td><?php echo $data['estado']; ?></td>
             <td><?php echo $row_6['nombre']; ?></td> <!--Hallazgo--> 
             <td><?php echo $row_7['nombre']; ?></td> <!--Medida-->
             <td><?php echo $data['fechaMax']; ?></td>
@@ -200,14 +210,14 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
-            mysqli_free_result($resultado_6);
-            mysqli_free_result($resultado_7);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
+            if (isset($resultado_6)) { mysqli_free_result($resultado_6); }
+            if (isset($resultado_7)) { mysqli_free_result($resultado_7); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -231,7 +241,7 @@
             <input type="text" name="idDemanda" id="idDemanda-Nuevo" minlength="5" maxlength="5" placeholder="DM000"><br>
             Fecha<br>
             <input type="date" name="fecha" id="fecha-Nuevo"><br>
-            Responsable<br>
+            Asignado a<br>
             <select name="idUsuario" id="idUsuario-Nuevo">
               <?php
                 include 'dbh.php';
@@ -245,7 +255,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -263,7 +273,7 @@
               <option value="<?php echo $data['idHallazgo']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -281,7 +291,7 @@
               <option value="<?php echo $data['idCorrectivo']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -299,7 +309,7 @@
               <option value="<?php echo $data['idLista']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -313,6 +323,7 @@
             <select name="estado" id="estado-Nuevo">
               <option value="Pendiente">Pendiente</option>
               <option value="Aceptada">Aceptada</option>
+              <option value="Aceptada">Cerrada</option>
             </select><br>
             Comentario<br>
             <input type="text" name="comentario" id="comentario-Nuevo" minlength="5" maxlength="200"><br>
@@ -320,7 +331,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit" form="FormNuevo" class="btn btn-success btn-modal">Guardar</button>
+          <button type="submit" name="submit" form="FormNuevo" class="btn btn-success btn-modal">Guardar</button>
         </div>
       </div>
     </div>
@@ -336,12 +347,17 @@
           <h4 class="modal-title">Modificar Demanda de Seguridad</h4>
         </div>
         <div class="modal-body">
+          <!--Formulario de Redireccion a foto-->
+          <form id="FormFoto" action="server/fotoDemanda.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="idDemanda-Foto" name="idDemanda" value="" placeholder="">
+          </form>
+          <!--Formulario Modificar-->
           <form id="FormModificar" action="server/modificarDemanda.php" method="POST">
             Codigo<br>
-            <input type="text" name="idDemanda" id="idDemanda-Modificar" minlength="5" maxlength="5" placeholder="DM000"><br>
+            <input type="text" name="idDemanda" id="idDemanda-Modificar" minlength="5" maxlength="5"  disabled><br>
             Fecha<br>
             <input type="date" name="fecha" id="fecha-Modificar"><br>
-            Responsable<br>
+            Asignado a<br>
             <select name="idUsuario" id="idUsuario-Modificar">
               <?php
                 include 'dbh.php';
@@ -355,7 +371,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -373,7 +389,7 @@
               <option value="<?php echo $data['idHallazgo']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -391,7 +407,7 @@
               <option value="<?php echo $data['idCorrectivo']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -409,7 +425,7 @@
               <option value="<?php echo $data['idLista']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -423,7 +439,13 @@
             <select name="estado" id="estado-Modificar">
               <option value="Pendiente">Pendiente</option>
               <option value="Aceptada">Aceptada</option>
+              <option value="Aceptada">Cerrada</option>
             </select><br>
+            Evidencia Fotográfica<br>
+            <button style="border-radius: 4px;" type="submit" form="FormFoto" class="btn btn-default">
+              <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+              Ver imagen guardada 
+            </button><br>
             Comentario<br>
             <input type="text" name="comentario" id="comentario-Modificar" minlength="5" maxlength="200"><br>
           </form>
@@ -523,6 +545,8 @@
       $("#descripcion-Modificar").val(descripcion);
       $("#estado-Modificar").val(estado);
       $("#comentario-Modificar").val(comentario);
+      //Hidden value
+      $("#idDemanda-Foto").val(idDemanda);
     }
   </script>
 </body>

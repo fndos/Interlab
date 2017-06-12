@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="admin.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="admin.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -117,6 +117,14 @@
 
   <section id="data">
     <div class="container">
+
+      <div class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Bienvenido <strong>Administrador! </strong> <br>
+          Sistema de Gestión y Control de Seguridad y Salud Ocupacional.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
           <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
@@ -200,12 +208,12 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -251,9 +259,9 @@
               <option value="<?php echo $data['idDep']; ?>"><?php echo $data['nombre']; echo " - "; echo $row_2['nombre']; echo " - "; echo $row['ciudad']; ?></option>
               <?php 
                 }
-                mysqli_free_result($result);
-                mysqli_free_result($resultado);
-                mysqli_free_result($resultado_2);
+                if (isset($result)) { mysqli_free_result($result); }
+                if (isset($resultado)) { mysqli_free_result($resultado); }
+                if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -269,7 +277,7 @@
               <option value="<?php echo $data['idTrabajo']; ?>"><?php echo $data['nombre']; ?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -344,7 +352,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarUsuario.php" method="POST">
             Cédula<br>
-            <input type="text" name="idUsuario" id="idUsuario-Modificar" minlength="10" maxlength="10"><br>
+            <input type="text" name="idUsuario" id="idUsuario-Modificar" minlength="10" maxlength="10" disabled><br>
             Departamento<br>
             <select name="idDep" id="idDep-Modificar">
               <?php
@@ -369,9 +377,9 @@
               <option value="<?php echo $data['idDep']; ?>"><?php echo $data['nombre']; echo " - "; echo $row_2['nombre']; echo " - "; echo $row['ciudad']; ?></option>
               <?php 
                 }
-                mysqli_free_result($result);
-                mysqli_free_result($resultado);
-                mysqli_free_result($resultado_2);
+                if (isset($result)) { mysqli_free_result($result); }
+                if (isset($resultado)) { mysqli_free_result($resultado); }
+                if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -387,7 +395,7 @@
               <option value="<?php echo $data['idTrabajo']; ?>"><?php echo $data['nombre']; ?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>

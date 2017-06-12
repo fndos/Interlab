@@ -13,4 +13,4 @@ $estado = $_POST['estado'];
 $query = "UPDATE osea SET idOsea='$idOsea', idUsuario='$idUsuario', fecha='$fecha', contratista='$contratista', servicio='$servicio', monto='$monto', observacion='$observacion', estado='$estado' WHERE idOsea='$idOsea'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-orden.php");
+header("Location: ../seguridad-orden-mod.php");

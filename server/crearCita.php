@@ -18,4 +18,4 @@ $idMedicamento = $_POST['idMedicamento'];
 $query = "INSERT INTO cita (idCita, idUsuario, idServicio, profesional, fecha, hora, observacion, asistio, estado, idImagen, idExamen, idEnfermedad, idMedicamento) VALUES ('$idCita', '$idUsuario', '$idServicio', '$profesional', '$fecha', '$hora', '$observacion', '$asistio', '$estado', '$idImagen', '$idExamen', '$idEnfermedad', '$idMedicamento')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../doctor-cita.php");
+header("Location: ../doctor-cita-new.php");

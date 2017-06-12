@@ -10,6 +10,8 @@
   <meta name="author" content="Fernando Sánchez">
   <title>Interlab | Project</title>
   <!--My Stylesheet--> 
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="css/stylesheets/login.css">
   <!--Font Stylesheet-->
   <link rel="shortcut icon" href="images/favicon.ico">
@@ -28,5 +30,6 @@
   </div>
   <!--Template JavaScript-->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
 </body>
 </html>

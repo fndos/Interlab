@@ -56,7 +56,7 @@
 <body>
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,7 +64,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="seguridad.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="seguridad.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -122,7 +122,7 @@
         <?php 
           
           include 'dbh.php';
-          $año = $_GET['año'] ?? '2017';
+          $año = !empty($_GET['año']) ? $_GET['año'] : '2017';
           $meses = array('','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
           $query = "SELECT count(d.idDemanda) as NumeroDemandas, MONTH(d.fecha) as MES 
                           FROM demanda d

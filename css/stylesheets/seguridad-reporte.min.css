@@ -92,6 +92,9 @@
   width: 200px;
   float: left;
 }
+#label-admin, #label-med, #label-seg, #label-gen {
+  margin-left: 22px;
+}
 /* lg */ 
 @media (min-width: 1200px) {
   .nuevo, .btn-nuevo{

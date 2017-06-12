@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="jefe.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="jefe.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -78,10 +78,24 @@
 
   <section id="data">
     <div class="container">
+
+      <div class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Bienvenido <strong>Jefe/Lider! </strong> <br>
+          Sistema de Gestión y Control de Seguridad y Salud Ocupacional.
+      </div>
+
+      <div id="the-alert" class="alert alert-warning alert-dismissable collapse">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Usted no tiene permisos para acceder a esta opción.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
-          <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
-          <a class="btn btn-default btn-nuevo" data-toggle="modal" data-target="#ModalNuevo"><span>Nuevo Registro</span></a>
+          <button class="btn btn-success nuevo"><span class="glyphicon glyphicon-plus"></span></button>
+          <a class="btn btn-default btn-nuevo"><span>Nuevo Registro</span></a>
         </div>
       </div>    
       <table id="dt-usuarios" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -91,7 +105,7 @@
           <th>Fecha</th>
           <th>Sucursal</th>
           <th>Departamento</th>
-          <th>Responsable</th>
+          <th>Asignado a</th>
           <th>Estado</th>
           <th>Hallazgo</th>
           <th>Correctivo</th>
@@ -102,6 +116,7 @@
           <th>Aceptar</th>
           <th>Redirigir</th>
           <th>Comentar</th>
+          <th>Adjuntar</th>
         </tr>
         </thead>
         <tbody>
@@ -192,6 +207,11 @@
               <button class='btn btn-primary eliminar' onclick="comentarDemanda('<?php echo $data['idDemanda'];?>', '<?php echo $data['comentario'];?>')" data-toggle='modal' data-target='#ModalComentar'>
                 <span class='glyphicon glyphicon-comment'></span>
               </button>
+            </td>
+            <td>
+              <button class='btn btn-warning eliminar' onclick="adjuntarDemanda('<?php echo $data['idDemanda'];?>')" data-toggle='modal' data-target='#ModalAdjuntar'>
+                <span class='glyphicon glyphicon glyphicon-save'></span>
+              </button>
             </td> 
           </tr>
           <?php 
@@ -199,14 +219,14 @@
                 }
               }
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
-            mysqli_free_result($resultado_6);
-            mysqli_free_result($resultado_7);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
+            if (isset($resultado_6)) { mysqli_free_result($resultado_6); }
+            if (isset($resultado_7)) { mysqli_free_result($resultado_7); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -214,26 +234,6 @@
       </table>
     </div>
   </section>
-
-  <!--Modal Nuevo-->
-  <div id="ModalNuevo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">¡Acceso denegado!</h4>
-        </div>
-        <div class="modal-body">
-          Usted no tiene los permisos para acceder a esta opcion.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit" data-dismiss="modal" class="btn btn-info btn-warning">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!--Modal Aceptar-->
   <div id="ModalAceptar" class="modal fade" role="dialog">
@@ -285,7 +285,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -320,6 +320,30 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           <button type="submit" form="FormComentar" class="btn btn-info btn-primary">Comentar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Adjuntar-->
+  <div id="ModalAdjuntar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Adjuntar Evidencia por Demanda de Seguridad</h4>
+        </div>
+        <div class="modal-body">
+          <form id="FormAdjuntar" enctype="multipart/form-data" action="server/jefe-adjuntarDemanda.php" method="POST">
+            <input type="hidden" id="idDemanda-Adjuntar" name="idDemanda" value="" placeholder="">
+            Seleccione una imagen<br>  
+            <input type="file" name="image">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" name="submit" form="FormAdjuntar" class="btn btn-warning btn-modal">Guardar</button>
         </div>
       </div>
     </div>
@@ -372,6 +396,13 @@
   <!--My JavaScript-->
   <script type="text/javascript" src="js/admin.min.js"></script>
   <script type="text/javascript">
+    $(document).ready( function () {
+      $("#botoneria").click( function () {
+        $("#the-alert").show();
+      }) 
+
+    });
+
     function aceptarDemanda(idDemanda) {
       $("#idDemanda-Aceptar").val(idDemanda);
       $("#estado-Aceptar").val("Aceptada");
@@ -384,6 +415,9 @@
     function comentarDemanda(idDemanda, comentario) {
       $("#idDemanda-Comentar").val(idDemanda);
       $("#comentario-Comentar").val(comentario);
+    }
+    function adjuntarDemanda(idDemanda) {
+      $("#idDemanda-Adjuntar").val(idDemanda);
     }
   </script>
 </body>

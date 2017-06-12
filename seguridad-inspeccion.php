@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="seguridad.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="seguridad.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -108,7 +108,7 @@
           <th>Fecha</th>
           <th>Sucursal</th>
           <th>Departamento</th>
-          <th>Responsable</th>
+          <th>Asignado a</th>
           <th>Motivo</th>
           <th>Estado</th>
           <th>Editar</th>
@@ -180,12 +180,12 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -209,7 +209,7 @@
             <input type="text" name="idInspeccion" id="idInspeccion-Nuevo" minlength="5" maxlength="5" placeholder="IN000"><br>
             Fecha de Inspeccion<br>
             <input type="date" name="fecha" id="fecha-Nuevo"><br>
-            Responsable<br>
+            Asignado a<br>
             <select name="idUsuario" id="idUsuario-Nuevo">
               <?php
                 include 'dbh.php';
@@ -223,7 +223,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -241,7 +241,7 @@
               <option value="<?php echo $data['idLista']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -275,10 +275,10 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarInspeccion.php" method="POST">
             Codigo<br>
-            <input type="text" name="idInspeccion" id="idInspeccion-Modificar" minlength="5" maxlength="5"><br>
+            <input type="text" name="idInspeccion" id="idInspeccion-Modificar" minlength="5" maxlength="5" disabled><br>
             Fecha de Inspeccion<br>
             <input type="date" name="fecha" id="fecha-Modificar"><br>
-            Responsable<br>
+            Asignado a<br>
             <select name="idUsuario" id="idUsuario-Modificar">
               <?php
                 include 'dbh.php';
@@ -292,7 +292,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -310,7 +310,7 @@
               <option value="<?php echo $data['idLista']?>"><?php echo $nombre;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>

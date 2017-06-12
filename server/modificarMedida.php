@@ -8,4 +8,4 @@ $nombre = $_POST['nombre'];
 $query = "UPDATE medidacorrectiva SET idCorrectivo='$idCorrectivo', nombre='$nombre' WHERE idCorrectivo='$idCorrectivo'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-medida.php");
+header("Location: ../admin-medida-mod.php");

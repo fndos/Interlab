@@ -17,4 +17,4 @@ $comentario = $_POST['comentario'];
 $query = "INSERT INTO demanda (idDemanda, idUsuario, idHallazgo, idCorrectivo, idLista, fecha, fechaMax, fechaCierre, descripcion, estado, comentario) VALUES ('$idDemanda', '$idUsuario', '$idHallazgo', '$idCorrectivo', '$idLista', '$fecha', '$fechaMax', '$fechaCierre', '$descripcion', '$estado', '$comentario')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad.php");
+header("Location: ../seguridad-new.php");

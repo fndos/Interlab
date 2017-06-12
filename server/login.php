@@ -32,6 +32,6 @@ if ($row = $admin->fetch_assoc()) {
 	$_SESSION['user'] = $row['user']; 
 	header("Location: ../jefe.php");	
 } else {
-	header("Location: ../index.php");	
+	header("Location: ../index-error.php");	
 }
 

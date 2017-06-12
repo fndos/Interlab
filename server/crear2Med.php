@@ -8,4 +8,4 @@ $nombre = $_POST['nombre'];
 $query = "INSERT INTO tipomedicamento (idMed, nombre) VALUES ('$idMed', '$nombre')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-tipomedicamento.php");
+header("Location: ../admin-tipomedicamento-new.php");

@@ -11,4 +11,4 @@ $observacion = $_POST['observacion'];
 $query = "INSERT INTO informe (idInforme, idUsuario, idEpp, fecha, cantidad, observacion) VALUES ('$idInforme', '$idUsuario', '$idEpp', '$fecha', '$cantidad', '$observacion')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-epp.php");
+header("Location: ../seguridad-epp-new.php");

@@ -9,4 +9,4 @@ $estado = $_POST['estado'];
 $query = "UPDATE demanda SET idUsuario='$idUsuario', estado='$estado' WHERE idDemanda='$idDemanda'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../doctor-demanda.php");
+header("Location: ../doctor-demanda-redirigir.php");

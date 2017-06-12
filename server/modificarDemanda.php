@@ -16,4 +16,4 @@ $comentario = $_POST['comentario'];
 $query = "UPDATE demanda SET idDemanda='$idDemanda', idUsuario='$idUsuario', idHallazgo='$idHallazgo', idCorrectivo='$idCorrectivo', idLista='$idLista', fecha='$fecha', fechaMax='$fechaMax', fechaCierre='$fechaCierre', descripcion='$descripcion', estado='$estado', comentario='$comentario' WHERE idDemanda='$idDemanda'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad.php");
+header("Location: ../seguridad-mod.php");

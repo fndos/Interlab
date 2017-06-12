@@ -8,4 +8,4 @@ $nombre = $_POST['nombre'];
 $query = "INSERT INTO tipohallazgo (idHall, nombre) VALUES ('$idHall', '$nombre')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-tipohallazgo.php");
+header("Location: ../admin-tipohallazgo-new.php");

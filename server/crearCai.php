@@ -24,4 +24,4 @@ $elaborado = $_POST['elaborado'];
 $query = "INSERT INTO cai (idCai, idUsuario, fechaInforme, severidad, turno, fechaSuceso, danosMateriales, monto, estado, jornadasPerdidas, descripcion, partesAfectadas, atendidoEn, reposo, desde, hasta, recomendaciones, accionesCorrectivas, elaborado) VALUES ('$idCai', '$idUsuario', '$fechaInforme', '$severidad', '$turno', '$fechaSuceso', '$danosMateriales', '$monto', '$estado', '$jornadasPerdidas', '$descripcion', '$partesAfectadas', '$atendidoEn', '$reposo', '$desde', '$hasta', '$recomendaciones', '$accionesCorrectivas', '$elaborado')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../seguridad-cai.php");
+header("Location: ../seguridad-cai-new.php");

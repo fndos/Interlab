@@ -10,4 +10,4 @@ $email = $_POST['email'];
 $query = "INSERT INTO entidad (idEntidad, nombre, titular, email) VALUES ('$idEntidad', '$nombre', '$titular', '$email')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-entidad.php");
+header("Location: ../admin-entidad-new.php");

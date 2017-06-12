@@ -8,4 +8,4 @@ $nombre = $_POST['nombre'];
 $query = "UPDATE tipohallazgo SET idHall='$idHall', nombre='$nombre' WHERE idHall='$idHall'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-tipohallazgo.php");
+header("Location: ../admin-tipohallazgo-mod.php");

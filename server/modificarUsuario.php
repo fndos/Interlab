@@ -22,4 +22,4 @@ $rol = $_POST['rol'];
 $query = "UPDATE usuario SET idUsuario='$idUsuario', idTrabajo='$idTrabajo', nombres='$nombres', apellidos='$apellidos', birthday='$birthday', sexo='$sexo', estadoCivil='$estadoCivil', educacion='$educacion', idDep='$idDep', telefono='$telefono', celular='$celular', direccion='$direccion', email='$email', estado='$estado', user='$user', pass='$pass', rol='$rol' WHERE idUsuario='$idUsuario'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin.php");
+header("Location: ../admin-mod.php");

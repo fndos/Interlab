@@ -9,4 +9,4 @@ $nombre = $_POST['nombre'];
 $query = "INSERT INTO medicamento (idMedicamento, idMed, nombre) VALUES ('$idMedicamento', '$idMed', '$nombre')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-medicamento.php");
+header("Location: ../admin-medicamento-new.php");

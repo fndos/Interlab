@@ -25,4 +25,4 @@ $medicamentoDetalle = $_POST['medicamentoDetalle'];
 $query = "INSERT INTO ficha (idFicha, idUsuario, fechaIngreso, vulnerabilidad, detalle, grupoSanguineo, nombreEmergencia, celularEmergencia, peso, talla, imc, pa, fc, fr, quirurgicos, traumaticos, alergicos, enfermedades, medicamento, medicamentoDetalle) VALUES ('$idFicha', '$idUsuario', '$fechaIngreso', '$vulnerabilidad', '$detalle', '$grupoSanguineo', '$nombreEmergencia', '$celularEmergencia', '$peso', '$talla', '$imc', '$pa', '$fc', '$fr', '$quirurgicos', '$traumaticos', '$alergicos', '$enfermedades', '$medicamento', '$medicamentoDetalle')";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../doctor.php");
+header("Location: ../doctor-new.php");

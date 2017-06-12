@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="doctor.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="doctor.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -159,11 +159,11 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -199,7 +199,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -215,7 +215,7 @@
               <option value="<?php echo $data['idServicio']?>"><?php echo $data['nombre'];?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -233,7 +233,7 @@
               <option value="<?php echo $nombres; echo " "; echo $apellidos;?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>  
@@ -270,7 +270,7 @@
               <option value="<?php echo $data['idImagen']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -292,7 +292,7 @@
               <option value="<?php echo $data['idEnfermedad']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -314,7 +314,7 @@
               <option value="<?php echo $data['idExamen']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -336,7 +336,7 @@
               <option value="<?php echo $data['idMedicamento']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -364,7 +364,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarCita.php" method="POST">
             Codigo<br>
-            <input type="text" name="idCita" id="idCita-Modificar" minlength="5" maxlength="5"><br>
+            <input type="text" name="idCita" id="idCita-Modificar" minlength="5" maxlength="5" disabled><br>
             Paciente<br>
             <select name="idUsuario" id="idUsuario-Modificar">
               <?php
@@ -379,7 +379,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -395,7 +395,7 @@
               <option value="<?php echo $data['idServicio']?>"><?php echo $data['nombre'];?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -413,7 +413,7 @@
               <option value="<?php echo $nombres; echo " "; echo $apellidos;?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>  
@@ -449,7 +449,7 @@
               <option value="<?php echo $data['idImagen']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -472,7 +472,7 @@
               <option value="<?php echo $data['idEnfermedad']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -494,7 +494,7 @@
               <option value="<?php echo $data['idExamen']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -516,7 +516,7 @@
               <option value="<?php echo $data['idMedicamento']?>"><?php echo $data['nombre']; echo " - "; echo $row['nombre']?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>

@@ -6,4 +6,4 @@ $idDep = $_POST['idDep'];
 $query = "DELETE FROM departamento WHERE idDep='$idDep'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-departamento.php");
+header("Location: ../admin-departamento-del.php");

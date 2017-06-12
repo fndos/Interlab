@@ -9,4 +9,4 @@ $nombre = $_POST['nombre'];
 $query = "UPDATE medicamento SET idMedicamento='$idMedicamento', idMed='$idMed', nombre='$nombre' WHERE idMedicamento='$idMedicamento'";
 
 $result = mysqli_query($conn, $query);
-header("Location: ../admin-medicamento.php");
+header("Location: ../admin-medicamento-mod.php");

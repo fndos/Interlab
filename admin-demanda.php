@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="admin.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="admin.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -117,6 +117,13 @@
 
   <section id="data">
     <div class="container">
+
+      <div id="the-alert" class="alert alert-warning alert-dismissable collapse">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp; Usted no tiene permisos para acceder a esta opción.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
           <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
@@ -130,7 +137,8 @@
           <th>Fecha</th>
           <th>Sucursal</th>
           <th>Departamento</th>
-          <th>Responsable</th>
+          <th>Asignado a</th>
+          <th>Estado</th>
           <th>Hallazgo</th>
           <th>Correctivo</th>
           <th>Fecha Maxima</th>
@@ -201,6 +209,7 @@
             <td><?php echo $row_4['nombre']; echo " - "; echo $row_3['ciudad']; ?></td>
             <td><?php echo $row_2['nombre']; ?></td>
             <td><?php echo $row['nombres']; echo " "; echo $row['apellidos'];?></td>
+            <td><?php echo $data['estado']; ?></td>
             <td><?php echo $row_6['nombre']; ?></td> <!--Hallazgo--> 
             <td><?php echo $row_7['nombre']; ?></td> <!--Medida-->
             <td><?php echo $data['fechaMax']; ?></td>
@@ -210,14 +219,14 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
-            mysqli_free_result($resultado_2);
-            mysqli_free_result($resultado_3);
-            mysqli_free_result($resultado_4);
-            mysqli_free_result($resultado_5);
-            mysqli_free_result($resultado_6);
-            mysqli_free_result($resultado_7);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
+            if (isset($resultado_2)) { mysqli_free_result($resultado_2); }
+            if (isset($resultado_3)) { mysqli_free_result($resultado_3); }
+            if (isset($resultado_4)) { mysqli_free_result($resultado_4); }
+            if (isset($resultado_5)) { mysqli_free_result($resultado_5); }
+            if (isset($resultado_6)) { mysqli_free_result($resultado_6); }
+            if (isset($resultado_7)) { mysqli_free_result($resultado_7); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -225,26 +234,6 @@
       </table>
     </div>
   </section>
-
-  <!--Modal Nuevo-->
-  <div id="ModalNuevo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">¡Acceso denegado!</h4>
-        </div>
-        <div class="modal-body">
-          Usted no tiene los permisos para acceder a esta opcion.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit" data-dismiss="modal" class="btn btn-info btn-warning">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -293,6 +282,12 @@
   <!--My JavaScript-->
   <script type="text/javascript" src="js/admin.min.js"></script>
   <script type="text/javascript">
+    $(document).ready( function () {
+      $("#botoneria").click( function () {
+        $("#the-alert").show();
+      }) 
+
+    });
   </script>
 </body>
 </html>

@@ -38,7 +38,7 @@
 
   <div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
   <header id="home">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <nav class="navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a id="marca" class="navbar-brand" href="doctor.php">Interlab S.A.</a>
+          <a id="marca" class="navbar-brand" href="doctor.php"><span style="padding-right: 30px;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div class="collapse navbar-collapse"> 
           <ul class="nav navbar-nav">
@@ -82,6 +82,14 @@
 
   <section id="data">
     <div class="container">
+
+      <div id="the-alert" class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          Bienvenido <strong>Doctor/Enfermero! </strong> <br>
+          Sistema de Gestión y Control de Seguridad y Salud Ocupacional.
+      </div>
+
       <div class="row">
         <div class="dt-buttons btn-group" id="botoneria">
           <button class="btn btn-success nuevo" data-toggle="modal" data-target="#ModalNuevo"><span class="glyphicon glyphicon-plus"></span></button>
@@ -135,8 +143,8 @@
           </tr>
           <?php 
             }
-            mysqli_free_result($result);
-            mysqli_free_result($resultado);
+            if (isset($result)) { mysqli_free_result($result); }
+            if (isset($resultado)) { mysqli_free_result($resultado); }
             mysqli_close($conn);
           ?>
         </tbody>
@@ -172,7 +180,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
@@ -260,7 +268,7 @@
         <div class="modal-body">
           <form id="FormModificar" action="server/modificarFicha.php" method="POST">
             Historia<br>
-            <input type="text" name="idFicha" id="idFicha-Modificar" minlength="5" maxlength="5"><br>
+            <input type="text" name="idFicha" id="idFicha-Modificar" minlength="5" maxlength="5" disabled><br>
             Empleado<br>
             <select name="idUsuario" id="idUsuario-Modificar">
               <?php
@@ -275,7 +283,7 @@
               <option value="<?php echo $data['idUsuario']?>"><?php echo $nombres; echo " "; echo $apellidos;?></option>
               <?php 
                 }
-                mysqli_free_result($result);
+                if (isset($result)) { mysqli_free_result($result); }
                 mysqli_close($conn);
               ?>
             </select><br>
